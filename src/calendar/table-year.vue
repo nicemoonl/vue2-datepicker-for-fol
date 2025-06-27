@@ -4,8 +4,8 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-decade')"
-        @click="handleIconDoubleLeftClick"
         aria-label="Last decade"
+        @click="handleIconDoubleLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <span>{{ firstYear }}</span>
@@ -15,8 +15,8 @@
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-decade')"
-        @click="handleIconDoubleRightClick"
         aria-label="Next decade"
+        @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">

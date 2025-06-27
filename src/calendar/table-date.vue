@@ -4,14 +4,14 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
-        @click="handleIconDoubleLeftClick"
         aria-label="Last year"
+        @click="handleIconDoubleLeftClick"
       ></icon-button>
       <icon-button
         type="left"
         :disabled="isDisabledArrows('last-month')"
-        @click="handleIconLeftClick"
         aria-label="Last month"
+        @click="handleIconLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <button
@@ -21,8 +21,8 @@
           :class="
             `${prefixClass}-btn ${prefixClass}-btn-text ${prefixClass}-btn-current-${item.panel}`
           "
-          @click="handlePanelChange(item.panel)"
           :aria-label="item.ariaLabel"
+          @click="handlePanelChange(item.panel)"
         >
           {{ item.label }}
         </button>
@@ -30,14 +30,14 @@
       <icon-button
         type="right"
         :disabled="isDisabledArrows('next-month')"
-        @click="handleIconRightClick"
         aria-label="Next month"
+        @click="handleIconRightClick"
       ></icon-button>
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-year')"
-        @click="handleIconDoubleRightClick"
         aria-label="Next year"
+        @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">
@@ -69,9 +69,9 @@
               :class="getCellClasses(cell)"
               :title="getCellTitle(cell)"
               :aria-label="cell.getDate()"
+              tabindex="0"
               @mouseenter="handleMouseEnter(cell)"
               @mouseleave="handleMouseLeave(cell)"
-              tabindex="0"
             >
               <div>{{ cell.getDate() }}</div>
             </td>

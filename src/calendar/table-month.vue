@@ -4,15 +4,15 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
-        @click="handleIconDoubleLeftClick"
         aria-label="Last year"
+        @click="handleIconDoubleLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <button
           type="button"
           :class="`${prefixClass}-btn ${prefixClass}-btn-text`"
-          @click="handlePanelChange"
           aria-label="Select year"
+          @click="handlePanelChange"
         >
           {{ calendarYear }}
         </button>
@@ -20,8 +20,8 @@
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-year')"
-        @click="handleIconDoubleRightClick"
         aria-label="Next year"
+        @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">

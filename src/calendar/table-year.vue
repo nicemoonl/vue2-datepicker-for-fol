@@ -5,20 +5,22 @@
         type="double-left"
         :disabled="isDisabledArrows('last-decade')"
         @click="handleIconDoubleLeftClick"
-      ></icon-button>
-      <icon-button
-        type="double-right"
-        :disabled="isDisabledArrows('next-decade')"
-        @click="handleIconDoubleRightClick"
+        aria-label="Last decade"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <span>{{ firstYear }}</span>
         <span :class="`${prefixClass}-calendar-decade-separator`"></span>
         <span>{{ lastYear }}</span>
       </span>
+      <icon-button
+        type="double-right"
+        :disabled="isDisabledArrows('next-decade')"
+        @click="handleIconDoubleRightClick"
+        aria-label="Next decade"
+      ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">
-      <table :class="`${prefixClass}-table ${prefixClass}-table-year`" @click="handleClick">
+      <table :class="`${prefixClass}-table ${prefixClass}-table-year`" @click="handleClick" @keydown.enter="handleClick">
         <tr v-for="(row, i) in years" :key="i">
           <td
             v-for="(cell, j) in row"
@@ -26,6 +28,8 @@
             :data-year="cell"
             class="cell"
             :class="getCellClasses(cell)"
+            :aria-label="cell"
+            tabindex="0"
           >
             <div>{{ cell }}</div>
           </td>
@@ -94,6 +98,10 @@ export default {
           break;
         default:
           break;
+      }
+      if (type == 'last-decade' && date.getFullYear() < 2020) {
+        // block selection before 2020
+        return true;
       }
       return this.disabledCalendarChanger(date, type);
     },

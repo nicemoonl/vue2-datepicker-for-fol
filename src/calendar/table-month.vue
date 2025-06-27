@@ -5,24 +5,27 @@
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
         @click="handleIconDoubleLeftClick"
-      ></icon-button>
-      <icon-button
-        type="double-right"
-        :disabled="isDisabledArrows('next-year')"
-        @click="handleIconDoubleRightClick"
+        aria-label="Last year"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <button
           type="button"
           :class="`${prefixClass}-btn ${prefixClass}-btn-text`"
           @click="handlePanelChange"
+          aria-label="Select year"
         >
           {{ calendarYear }}
         </button>
       </span>
+      <icon-button
+        type="double-right"
+        :disabled="isDisabledArrows('next-year')"
+        @click="handleIconDoubleRightClick"
+        aria-label="Next year"
+      ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">
-      <table :class="`${prefixClass}-table ${prefixClass}-table-month`" @click="handleClick">
+      <table :class="`${prefixClass}-table ${prefixClass}-table-month`" @click="handleClick" @keydown.enter="handleClick">
         <tr v-for="(row, i) in months" :key="i">
           <td
             v-for="(cell, j) in row"
@@ -30,6 +33,8 @@
             :data-month="cell.month"
             class="cell"
             :class="getCellClasses(cell.month)"
+            :aria-label="cell.text"
+            tabindex="0"
           >
             <div>{{ cell.text }}</div>
           </td>
@@ -96,6 +101,10 @@ export default {
           break;
         default:
           break;
+      }
+      if (type == 'last-year' && date.getFullYear() < 2020) {
+        // block selection before 2020
+        return true;
       }
       return this.disabledCalendarChanger(date, type);
     },

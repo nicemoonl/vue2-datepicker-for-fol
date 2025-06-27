@@ -414,7 +414,7 @@ export default {
       } else {
         date = this.parseDate(text);
       }
-      if (this.isValidValueAndNotDisabled(date)) {
+      if (this.isValidValueAndNotDisabled(date) && date.getFullYear() >= 2020) {
         this.emitValue(date);
         this.blur();
       } else {
@@ -429,7 +429,7 @@ export default {
       const { keyCode } = evt;
       // Tab 9 or Enter 13
       if (keyCode === 9) {
-        this.closePopup();
+        // this.closePopup();
       } else if (keyCode === 13) {
         this.handleInputChange();
       }
@@ -469,13 +469,13 @@ export default {
       const events = {
         keydown: this.handleInputKeydown,
         focus: this.handleInputFocus,
-        blur: this.handleInputBlur,
+        // blur: this.handleInputBlur,
         input: this.handleInputInput,
         change: this.handleInputChange,
       };
       const input = this.renderSlot(
         'input',
-        <input value={value} class={className} {...{ attrs, on: events }} ref="input" />,
+        <input value={value} class={className} {...{ attrs, on: events }} ref="input" aria-label="Select date" />,
         {
           props,
           events,

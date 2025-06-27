@@ -5,21 +5,13 @@
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
         @click="handleIconDoubleLeftClick"
+        aria-label="Last year"
       ></icon-button>
       <icon-button
         type="left"
         :disabled="isDisabledArrows('last-month')"
         @click="handleIconLeftClick"
-      ></icon-button>
-      <icon-button
-        type="double-right"
-        :disabled="isDisabledArrows('next-year')"
-        @click="handleIconDoubleRightClick"
-      ></icon-button>
-      <icon-button
-        type="right"
-        :disabled="isDisabledArrows('next-month')"
-        @click="handleIconRightClick"
+        aria-label="Last month"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <button
@@ -30,10 +22,23 @@
             `${prefixClass}-btn ${prefixClass}-btn-text ${prefixClass}-btn-current-${item.panel}`
           "
           @click="handlePanelChange(item.panel)"
+          :aria-label="item.ariaLabel"
         >
           {{ item.label }}
         </button>
       </span>
+      <icon-button
+        type="right"
+        :disabled="isDisabledArrows('next-month')"
+        @click="handleIconRightClick"
+        aria-label="Next month"
+      ></icon-button>
+      <icon-button
+        type="double-right"
+        :disabled="isDisabledArrows('next-year')"
+        @click="handleIconDoubleRightClick"
+        aria-label="Next year"
+      ></icon-button>
     </div>
     <div :class="`${prefixClass}-calendar-content`">
       <table :class="`${prefixClass}-table ${prefixClass}-table-date`">
@@ -43,7 +48,7 @@
             <th v-for="day in days" :key="day">{{ day }}</th>
           </tr>
         </thead>
-        <tbody @click="handleCellClick">
+        <tbody @click="handleCellClick" @keydown.enter="handleCellClick">
           <tr
             v-for="(row, i) in dates"
             :key="i"
@@ -63,8 +68,10 @@
               class="cell"
               :class="getCellClasses(cell)"
               :title="getCellTitle(cell)"
+              :aria-label="cell.getDate()"
               @mouseenter="handleMouseEnter(cell)"
               @mouseleave="handleMouseLeave(cell)"
+              tabindex="0"
             >
               <div>{{ cell.getDate() }}</div>
             </td>
@@ -137,10 +144,12 @@ export default {
       const yearLabel = {
         panel: 'year',
         label: this.formatDate(this.calendar, yearFormat),
+        ariaLabel: 'Select year',
       };
       const monthLabel = {
         panel: 'month',
         label: this.formatDate(this.calendar, monthFormat),
+        ariaLabel: 'Select month',
       };
       return monthBeforeYear ? [monthLabel, yearLabel] : [yearLabel, monthLabel];
     },
@@ -180,6 +189,10 @@ export default {
           break;
         default:
           break;
+      }
+      if ((type == 'last-year' || type == 'last-month') && date.getFullYear() < 2020) {
+        // block selection before 2020
+        return true;
       }
       return this.disabledCalendarChanger(date, type);
     },

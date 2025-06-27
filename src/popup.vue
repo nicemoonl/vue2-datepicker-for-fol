@@ -56,6 +56,7 @@ export default {
     this._clickoutEvent = 'ontouchend' in document ? 'touchstart' : 'mousedown';
 
     document.addEventListener(this._clickoutEvent, this.handleClickOutside);
+    document.addEventListener('focusout', this.handleClickOutside);
 
     // change the popup position when resize or scroll
     const relativeElement = this.$parent.$el;
@@ -70,6 +71,7 @@ export default {
     }
 
     document.removeEventListener(this._clickoutEvent, this.handleClickOutside);
+    document.addEventListener('focusout', this.handleClickOutside);
 
     this._scrollParent.removeEventListener('scroll', this._displayPopup);
     window.removeEventListener('resize', this._displayPopup);

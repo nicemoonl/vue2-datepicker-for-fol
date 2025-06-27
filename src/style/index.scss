@@ -154,19 +154,22 @@
   line-height: 34px;
   text-align: center;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
 .#{$namespace}-btn-icon-left,
 .#{$namespace}-btn-icon-double-left {
-  float: left;
+  align-self: flex-start;
 }
 .#{$namespace}-btn-icon-right,
 .#{$namespace}-btn-icon-double-right {
-  float: right;
+  align-self: flex-end;
 }
 
 .#{$namespace}-calendar-header-label {
   font-size: 14px;
+  flex-grow: 1;
 }
 
 .#{$namespace}-calendar-decade-separator {

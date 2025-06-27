@@ -93,7 +93,7 @@ export default {
     },
     appendToBody: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     open: {
       type: Boolean,

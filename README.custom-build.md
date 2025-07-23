@@ -6,11 +6,7 @@ Then copy the contents in the `/output` folder to FOL
 The file structure of `/output` is as the following:
 ```
 /locale
-/scss
 index.css
-index.esm.js
 index.js
-index.js.map
 index.min.js
-index.min.js.map
 ```

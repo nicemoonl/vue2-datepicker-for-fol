@@ -17,7 +17,7 @@
     "build:index": "cross-env NODE_ENV=production rollup -c",
     "build:locale": "cross-env NODE_ENV=production rollup -c rollup.locale.config.js",
     "build:css": "sass --style=compressed --no-source-map src/style/index.scss index.css && postcss index.css --use autoprefixer -o index.css --no-map && cpx \"src/style/**\" scss",
-    "build:output": "rimraf output && cpx \"locale/**\" output/locale && cpx \"index.*\" output && cpx \"scss/**\" output/scss",
+    "build:output": "rimraf output && cpx \"locale/**\" output/locale && cpx \"index.js\" output && cpx \"index.min.js\" output && cpx \"index.css\" output",
     "build": "npm run clean && npm run build:index && npm run build:css && npm run build:locale && npm run build:output",
     "clean": "rimraf scss locale index.*",
     "lint": "eslint src/**/*.{js,vue}",

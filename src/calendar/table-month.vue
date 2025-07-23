@@ -31,9 +31,11 @@
             v-for="(cell, j) in row"
             :key="j"
             :data-month="cell.month"
+            role="button"
             class="cell"
             :class="getCellClasses(cell.month)"
             :aria-label="cell.text"
+            :aria-current="cell.month === calendar.getMonth()"
             tabindex="0"
           >
             <div>{{ cell.text }}</div>

@@ -26,9 +26,11 @@
             v-for="(cell, j) in row"
             :key="j"
             :data-year="cell"
+            role="button"
             class="cell"
             :class="getCellClasses(cell)"
             :aria-label="cell"
+            :aria-current="cell === calendar.getFullYear()"
             tabindex="0"
           >
             <div>{{ cell }}</div>

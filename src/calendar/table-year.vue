@@ -45,11 +45,15 @@
 import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { setYear } from '../util/date';
+import { getLocale } from '../locale';
 
 export default {
   name: 'TableYear',
   components: { IconButton },
   inject: {
+    getLocale: {
+      default: () => getLocale,
+    },
     prefixClass: {
       default: 'mx',
     },

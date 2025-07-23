@@ -4,13 +4,13 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
-        aria-label="Last year"
+        :aria-label="getLocale().DatePicker.lastYear"
         @click="handleIconDoubleLeftClick"
       ></icon-button>
       <icon-button
         type="left"
         :disabled="isDisabledArrows('last-month')"
-        aria-label="Last month"
+        :aria-label="getLocale().DatePicker.lastMonth"
         @click="handleIconLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
@@ -30,13 +30,13 @@
       <icon-button
         type="right"
         :disabled="isDisabledArrows('next-month')"
-        aria-label="Next month"
+        :aria-label="getLocale().DatePicker.nextMonth"
         @click="handleIconRightClick"
       ></icon-button>
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-year')"
-        aria-label="Next year"
+        :aria-label="getLocale().DatePicker.nextYear"
         @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>
@@ -146,12 +146,12 @@ export default {
       const yearLabel = {
         panel: 'year',
         label: this.formatDate(this.calendar, yearFormat),
-        ariaLabel: 'Select year',
+        ariaLabel: this.getLocale().DatePicker.selectYear,
       };
       const monthLabel = {
         panel: 'month',
         label: this.formatDate(this.calendar, monthFormat),
-        ariaLabel: 'Select month',
+        ariaLabel: this.getLocale().DatePicker.selectMonth,
       };
       return monthBeforeYear ? [monthLabel, yearLabel] : [yearLabel, monthLabel];
     },

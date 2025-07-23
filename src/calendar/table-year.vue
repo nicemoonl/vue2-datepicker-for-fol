@@ -4,7 +4,7 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-decade')"
-        aria-label="Last decade"
+        :aria-label="getLocale().DatePicker.lastDecade"
         @click="handleIconDoubleLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
@@ -15,7 +15,7 @@
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-decade')"
-        aria-label="Next decade"
+        :aria-label="getLocale().DatePicker.nextDecade"
         @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>

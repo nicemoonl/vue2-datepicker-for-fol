@@ -4,14 +4,14 @@
       <icon-button
         type="double-left"
         :disabled="isDisabledArrows('last-year')"
-        aria-label="Last year"
+        :aria-label="getLocale().DatePicker.lastYear"
         @click="handleIconDoubleLeftClick"
       ></icon-button>
       <span :class="`${prefixClass}-calendar-header-label`">
         <button
           type="button"
           :class="`${prefixClass}-btn ${prefixClass}-btn-text`"
-          aria-label="Select year"
+          :aria-label="getLocale().DatePicker.selectYear"
           @click="handlePanelChange"
         >
           {{ calendarYear }}
@@ -20,7 +20,7 @@
       <icon-button
         type="double-right"
         :disabled="isDisabledArrows('next-year')"
-        aria-label="Next year"
+        :aria-label="getLocale().DatePicker.nextYear"
         @click="handleIconDoubleRightClick"
       ></icon-button>
     </div>

@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { setYear } from '../util/date';
 
@@ -101,7 +101,7 @@ export default {
         default:
           break;
       }
-      if (type == 'last-decade' && date.getFullYear() < 2020) {
+      if (type === 'last-decade' && date.getFullYear() < 2020) {
         // block selection before 2020
         return true;
       }

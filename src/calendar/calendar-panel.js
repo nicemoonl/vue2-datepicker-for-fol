@@ -7,9 +7,9 @@ import {
   startOfMonth,
   startOfDay,
 } from '../util/date';
-import TableDate from './table-date';
-import TableMonth from './table-month';
-import TableYear from './table-year';
+import TableDate from './table-date.vue';
+import TableMonth from './table-month.vue';
+import TableYear from './table-year.vue';
 
 export default {
   name: 'CalendarPanel',

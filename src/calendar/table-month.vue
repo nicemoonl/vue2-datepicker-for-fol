@@ -48,7 +48,7 @@
 
 <script>
 import { chunk } from '../util/base';
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { getLocale } from '../locale';
 import { setYear } from '../util/date';
 
@@ -104,7 +104,7 @@ export default {
         default:
           break;
       }
-      if (type == 'last-year' && date.getFullYear() < 2020) {
+      if (type === 'last-year' && date.getFullYear() < 2020) {
         // block selection before 2020
         return true;
       }

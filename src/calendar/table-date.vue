@@ -86,7 +86,7 @@
 
 <script>
 import { getWeek, format } from 'date-format-parse';
-import IconButton from './icon-button';
+import IconButton from './icon-button.vue';
 import { chunk } from '../util/base';
 import { getCalendar, setMonth, setYear } from '../util/date';
 import { getLocale } from '../locale';
@@ -192,7 +192,7 @@ export default {
         default:
           break;
       }
-      if ((type == 'last-year' || type == 'last-month') && date.getFullYear() < 2020) {
+      if ((type === 'last-year' || type === 'last-month') && date.getFullYear() < 2020) {
         // block selection before 2020
         return true;
       }

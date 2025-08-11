@@ -30,7 +30,7 @@
             class="cell"
             :class="getCellClasses(cell)"
             :aria-label="cell"
-            :aria-current="cell === calendar.getFullYear()"
+            :aria-current="getCellClasses(cell).includes('active') ? 'true' : 'false'"
             tabindex="0"
           >
             <div>{{ cell }}</div>

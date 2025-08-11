@@ -35,7 +35,7 @@
             class="cell"
             :class="getCellClasses(cell.month)"
             :aria-label="cell.text"
-            :aria-current="cell.month === calendar.getMonth()"
+            :aria-current="getCellClasses(cell.month).includes('active') ? 'true' : 'false'"
             tabindex="0"
           >
             <div>{{ cell.text }}</div>

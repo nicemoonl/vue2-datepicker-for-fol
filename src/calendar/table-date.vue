@@ -70,7 +70,7 @@
               :class="getCellClasses(cell)"
               :title="getCellTitle(cell)"
               :aria-label="cell.getDate()"
-              :aria-current="cell.getDate() === calendar.getDate()"
+              :aria-current="getCellClasses(cell).includes('active') ? 'true' : 'false'"
               tabindex="0"
               @mouseenter="handleMouseEnter(cell)"
               @mouseleave="handleMouseLeave(cell)"
